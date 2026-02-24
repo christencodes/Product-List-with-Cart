@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap");
+@import "tailwindcss";
+
+html,
+body,
+#root {
+  @apply h-full font-display bg-(--rose-50);
+}
+
+@theme {
+  --red-guide: #c73b0f;
+  --rose-900: #260f08;
+  --rose-500: #87635a;
+  --rose-400: #ad8a85;
+  --rose-300: #caafa7;
+  --rose-100: #f5eeec;
+  --rose-50: #fcf8f6;
+  --green-guide: #1ea575;
+
+  --font-display: "Red Hat Text", sans-serif;
+}
+
+.text-preset-1 {
+  @apply font-bold text-[40px] leading-[120%];
+}
+
+.text-preset-2 {
+  @apply font-bold text-[24px] leading-[125%];
+}
+
+.text-preset-3 {
+  @apply font-semibold text-base leading-[150%];
+}
+
+.text-preset-4 {
+  @apply font-normal text-sm leading-[150%];
+}
+
+.text-preset-4-bold {
+  @apply font-semibold text-sm leading-[150%];
+}
