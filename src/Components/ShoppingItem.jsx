@@ -1,11 +1,21 @@
 import shoppingCartImg from "/src/assets/Images/icon-add-to-cart.svg";
 
-export default function ShoppingItem({ image, name, category, price, num }) {
+export default function ShoppingItem({
+  image,
+  name,
+  category,
+  price,
+  num,
+  addToCart,
+}) {
   return (
     <div className="shoppingItem flex flex-col  max-w-62.5 max-h-86.75 gap-8">
       <div className="item-image-container  relative ">
         <img className="max-w-full rounded-lg " src={image} alt="" />
-        <button className="addCartButton absolute flex gap-3 rounded-full max-w-44 border-2 border-(--rose-400) right-1/6 bottom-[-10%] bg-(--rose-50) text-(--rose-900) text-preset-4-bold px-6 py-3">
+        <button
+          onClick={() => addToCart(name, price, num)}
+          className="addCartButton absolute flex gap-3 rounded-full max-w-44 border-2 border-(--rose-400) right-1/6 bottom-[-10%] bg-(--rose-50) text-(--rose-900) text-preset-4-bold px-6 py-3 cursor-pointer"
+        >
           <img src={shoppingCartImg} alt="" />
           Add to Cart
         </button>

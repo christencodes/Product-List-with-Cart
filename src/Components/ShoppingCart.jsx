@@ -1,34 +1,42 @@
-import removeIcon from "/src/assets/Images/icon-remove-item.svg";
+import CartItem from "./CartItem";
+import emptyCartImage from "/src/assets/Images/illustration-empty-cart.svg";
 
-export default function ShoppingCart(items) {
+export default function ShoppingCart({ shoppingCartItems }) {
   // items can be an array of items from the parent element?
-  function Total(items) {
-    return items.reduce((a, b) => a + b);
-  }
+
   return (
-    <div className="max-w-[384px] max-h-135.5 bg-white flex flex-col p-6 gap-6">
-      <h2 className="text-preset-2 text-(--red-guide)">{`Your Cart (0)`}</h2>
+    <div className="max-w-[384px] h-fit bg-white flex flex-col p-6 gap-6">
+      <h2 className="text-preset-2 text-(--red-guide)">{`Your Cart (${shoppingCartItems.length})`}</h2>
+
+      {shoppingCartItems.length < 1 ? (
+        <div className="w-84 flex flex-col justify-center items-center">
+          <img className="" src={emptyCartImage} alt="" />
+          <p className="text-preset-4-bold text-(--rose-500)">
+            Your added items will appear here
+          </p>
+        </div>
+      ) : undefined}
+
       <div className="cartItems">
         {/* Cart Item Template Component */}
-        <div className="cartItem w-full">
-          <h2 className="text-preset-4-bold text-(--rose-900)">
-            Classic Tiramisu
-          </h2>
-          <div className="itemCountAndPrice flex gap-30 justify-between">
-            <div className="flex gap-6 ">
-              <h2 className="count text-(--red-guide)">1x</h2>
-              <p>@ $5.50</p>
-              <p>$5.50</p>
-            </div>
-            <div className="h-5 w-5 border-(--rose-400) border rounded-full flex items-center justify-center">
-              <img className="w-3 h-3 m-0 p-0 " src={removeIcon} alt="" />
-            </div>
-          </div>
-        </div>
+        {shoppingCartItems.map((item) => (
+          <CartItem
+            name={item.name}
+            price={item.price}
+            number={item.number}
+            quantity={item.quantity}
+            key={item.number}
+          />
+        ))}
       </div>
 
-      <div>
-        <p>Order Total</p>
+      <div className="flex justify-between items-center">
+        <p className="text-preset-4 text-(--rose-900)">Order Total</p>
+        <p className="text-preset-2 text-(--rose-900)">
+          {`$${shoppingCartItems
+            .reduce((a, b) => a + b.price * b.quantity, 0)
+            .toFixed(2)}`}
+        </p>
       </div>
     </div>
   );
