@@ -1,11 +1,11 @@
 import CartItem from "./CartItem";
 import emptyCartImage from "/src/assets/Images/illustration-empty-cart.svg";
 
-export default function ShoppingCart({ shoppingCartItems }) {
+export default function ShoppingCart({ shoppingCartItems, deleteFromCart }) {
   // items can be an array of items from the parent element?
 
   return (
-    <div className="max-w-[384px] h-fit bg-white flex flex-col p-6 gap-6">
+    <div className="w-[384px] h-fit bg-white flex flex-col p-6 gap-6">
       <h2 className="text-preset-2 text-(--red-guide)">{`Your Cart (${shoppingCartItems.length})`}</h2>
 
       {shoppingCartItems.length < 1 ? (
@@ -26,6 +26,7 @@ export default function ShoppingCart({ shoppingCartItems }) {
             number={item.number}
             quantity={item.quantity}
             key={item.number}
+            deletefromCart={deleteFromCart}
           />
         ))}
       </div>

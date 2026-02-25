@@ -1,7 +1,11 @@
 import ShoppingItem from "./ShoppingItem";
 import ShoppingItemData from "/src/assets/data.json";
 
-export default function ShoppingList({ addToCart }) {
+export default function ShoppingList({
+  addToCart,
+  shoppingCartItems,
+  subtractFromCart,
+}) {
   const shoppingData = ShoppingItemData;
 
   return (
@@ -16,6 +20,8 @@ export default function ShoppingList({ addToCart }) {
             num={index}
             key={index}
             addToCart={addToCart}
+            shoppingCartItems={shoppingCartItems}
+            subtractFromCart={subtractFromCart}
           />
         );
       })}
