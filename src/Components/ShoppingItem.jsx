@@ -12,17 +12,18 @@ export default function ShoppingItem({
   shoppingCartItems,
   subtractFromCart,
 }) {
+  console.log(shoppingCartItems);
   const isThere = shoppingCartItems.find((item) => item.number === num);
   const amount = isThere
     ? shoppingCartItems.find((item) => item.number === num).quantity
-    : undefined;
+    : 0;
 
   return (
     <div className="shoppingItem flex flex-col  max-w-62.5 max-h-86.75 gap-8">
       <div className="item-image-container  relative ">
         <img className="max-w-full rounded-lg " src={image} alt="" />
 
-        {amount && (
+        {amount ? (
           <button
             // onClick={() => addToCart(name, price, num)}
             className={
@@ -46,9 +47,7 @@ export default function ShoppingItem({
               <img className="w-3 " src={incrementIcon} alt="" />
             </div>
           </button>
-        )}
-
-        {!amount && (
+        ) : (
           <button
             onClick={() => addToCart(name, price, num)}
             className={

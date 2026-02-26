@@ -1,6 +1,7 @@
 import ShoppingList from "./ShoppingList";
 import ShoppingCart from "./ShoppingCart";
 import CartItem from "./CartItem";
+import OrderConfirm from "./OrderConfirm";
 import { useState } from "react";
 
 export default function ShoppingArea({ children }) {
@@ -23,10 +24,8 @@ export default function ShoppingArea({ children }) {
     //! YOU LEFT OFF HERE!
     console.log("subtracting from cart");
     setShoppingcartItems((prevItems) => {
-      return prevItems.map((item) => {
-        if (item.number === number && item.quantity === 0) {
-          return;
-        }
+      const holder = prevItems.filter((items) => items.quantity > 0);
+      return holder.map((item) => {
         if (item.number === number) {
           return { ...item, quantity: item.quantity - 1 };
         } else {
@@ -62,7 +61,7 @@ export default function ShoppingArea({ children }) {
   }
 
   return (
-    <div className="shopping-area flex gap-10 h-full max-w-306.5 max-h-296.25">
+    <div className=" relative shopping-area flex gap-10 h-full max-w-306.5 max-h-296.25">
       <ShoppingList
         addToCart={addToCart}
         shoppingCartItems={shoppingCartItems}
@@ -72,6 +71,7 @@ export default function ShoppingArea({ children }) {
         shoppingCartItems={shoppingCartItems}
         deleteFromCart={deleteFromCart}
       ></ShoppingCart>
+      <OrderConfirm shoppingCartItems={shoppingCartItems} />
       {children}
     </div>
   );
