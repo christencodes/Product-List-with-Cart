@@ -21,7 +21,11 @@ export default function ShoppingItem({
   return (
     <div className="shoppingItem flex flex-col  max-w-62.5 max-h-86.75 gap-8">
       <div className="item-image-container  relative ">
-        <img className="max-w-full rounded-lg " src={image} alt="" />
+        <img
+          className={`max-w-full rounded-lg ${isThere ? "border-2" : "border-0"} `}
+          src={image}
+          alt=""
+        />
 
         {amount ? (
           <button

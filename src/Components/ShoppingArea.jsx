@@ -6,6 +6,12 @@ import { useState } from "react";
 
 export default function ShoppingArea({ children }) {
   const [shoppingCartItems, setShoppingcartItems] = useState([]);
+  const [orderConfirmStatus, setOrderConfirmStatus] = useState(false);
+
+  function changeOrderStatus() {
+    console.log("this ran");
+    setOrderConfirmStatus(!orderConfirmStatus);
+  }
 
   // Name of the item
   // Quantity
@@ -21,18 +27,19 @@ export default function ShoppingArea({ children }) {
   }
 
   function subtractFromCart(name, price, number) {
-    //! YOU LEFT OFF HERE!
-    console.log("subtracting from cart");
-    setShoppingcartItems((prevItems) => {
-      const holder = prevItems.filter((items) => items.quantity > 0);
-      return holder.map((item) => {
-        if (item.number === number) {
-          return { ...item, quantity: item.quantity - 1 };
-        } else {
-          return item;
-        }
-      });
+    setShoppingcartItems((prevItem) => {
+      return prevItem
+        .filter((item) => item.quantity > 0)
+        .map((item) => {
+          if (item.number === number) {
+            return { ...item, quantity: item.quanity - 1 };
+          } else {
+            return item;
+          }
+        });
     });
+
+    console.log("subtracting from cart");
   }
 
   function addToCart(name, price, number) {
@@ -61,18 +68,34 @@ export default function ShoppingArea({ children }) {
   }
 
   return (
-    <div className=" relative shopping-area flex gap-10 h-full max-w-306.5 max-h-296.25">
-      <ShoppingList
-        addToCart={addToCart}
-        shoppingCartItems={shoppingCartItems}
-        subtractFromCart={subtractFromCart}
-      ></ShoppingList>
-      <ShoppingCart
-        shoppingCartItems={shoppingCartItems}
-        deleteFromCart={deleteFromCart}
-      ></ShoppingCart>
-      <OrderConfirm shoppingCartItems={shoppingCartItems} />
-      {children}
-    </div>
+    <>
+      <div
+        className={
+          orderConfirmStatus
+            ? `absolute h-full w-full  bg-black/50 z-11`
+            : undefined
+        }
+      ></div>
+      <div className=" mx-auto pt-20  relative shopping-area flex gap-10 h-full max-w-306.5 max-h-296.25">
+        <ShoppingList
+          addToCart={addToCart}
+          shoppingCartItems={shoppingCartItems}
+          subtractFromCart={subtractFromCart}
+        ></ShoppingList>
+        <ShoppingCart
+          shoppingCartItems={shoppingCartItems}
+          deleteFromCart={deleteFromCart}
+          orderConfirmStatus={changeOrderStatus}
+        ></ShoppingCart>
+        {orderConfirmStatus ? (
+          <OrderConfirm
+            shoppingCartItems={shoppingCartItems}
+            orderConfirmStatus={changeOrderStatus}
+          />
+        ) : undefined}
+
+        {children}
+      </div>
+    </>
   );
 }

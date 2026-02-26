@@ -1,7 +1,11 @@
 import CartItem from "./CartItem";
 import emptyCartImage from "/src/assets/Images/illustration-empty-cart.svg";
 
-export default function ShoppingCart({ shoppingCartItems, deleteFromCart }) {
+export default function ShoppingCart({
+  shoppingCartItems,
+  deleteFromCart,
+  orderConfirmStatus,
+}) {
   // items can be an array of items from the parent element?
   const filteredItems = shoppingCartItems.filter((item) => item.quantity > 0);
 
@@ -41,7 +45,10 @@ export default function ShoppingCart({ shoppingCartItems, deleteFromCart }) {
         </p>
       </div>
 
-      <button className="w-full h-13 rounded-full bg-(--red-guide) text-(--rose-50)">
+      <button
+        onClick={() => orderConfirmStatus()}
+        className="w-full h-13 rounded-full bg-(--red-guide) text-(--rose-50) cursor-pointer"
+      >
         Confirm Order
       </button>
     </div>
