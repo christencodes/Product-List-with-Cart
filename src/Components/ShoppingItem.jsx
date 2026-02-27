@@ -1,6 +1,4 @@
 import shoppingCartImg from "/src/assets/Images/icon-add-to-cart.svg";
-import decrementIcon from "/src/assets/Images/icon-decrement-quantity.svg";
-import incrementIcon from "/src/assets/Images/icon-increment-quantity.svg";
 
 export default function ShoppingItem({
   image,
@@ -12,17 +10,16 @@ export default function ShoppingItem({
   shoppingCartItems,
   subtractFromCart,
 }) {
-  console.log(shoppingCartItems);
   const isThere = shoppingCartItems.find((item) => item.number === num);
   const amount = isThere
     ? shoppingCartItems.find((item) => item.number === num).quantity
     : 0;
 
   return (
-    <div className="shoppingItem flex flex-col  max-w-62.5 max-h-86.75 gap-8">
+    <div className="shoppingItem flex flex-col  max-w-62.5 max-h-fit gap-8 sm:max-w-full ">
       <div className="item-image-container  relative ">
         <img
-          className={`max-w-full rounded-lg ${isThere ? "border-2" : "border-0"} `}
+          className={`max-w-full rounded-lg ${isThere ? "border-4 border-(--red-guide)" : "border-0"} `}
           src={image}
           alt=""
         />
@@ -34,21 +31,37 @@ export default function ShoppingItem({
               "addCartButton absolute flex gap-10 items-center justify-center rounded-full max-w-44 bg-(--red-guide) border-2 border-(--rose-400) right-1/6 bottom-[-10%]  text-(--rose-900) text-preset-4-bold px-6 py-3 cursor-pointer"
             }
           >
-            <div className="h-5 w-5 rounded-full border border-(--rose-50) flex flex-col justify-center items-center">
-              <img
-                onClick={() => subtractFromCart(name, price, num)}
-                className="w-3 h-1.5 "
-                src={decrementIcon}
-                alt=""
-              />
+            <div
+              onClick={() => subtractFromCart(name, price, num)}
+              className=" group h-5 w-5 rounded-full border border-(--rose-50) flex flex-col justify-center items-center hover:bg-(--rose-50)"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="10"
+                height="2"
+                fill="none"
+                viewBox="0 0 10 2"
+                className="fill-white group-hover:fill-(--red-guide)"
+              >
+                <path d="M0 .375h10v1.25H0V.375Z" />
+              </svg>
             </div>
 
             <p className="text-(--rose-50)">{amount}</p>
             <div
               onClick={() => addToCart(name, price, num)}
-              className="h-5 w-5 rounded-full border border-(--rose-50) flex flex-col justify-center items-center"
+              className=" group h-5 w-5 rounded-full border border-(--rose-50) flex flex-col justify-center items-center hover:bg-(--rose-50)"
             >
-              <img className="w-3 " src={incrementIcon} alt="" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="10"
+                height="10"
+                fill="none"
+                viewBox="0 0 10 10"
+                className="fill-white group-hover:fill-(--red-guide)"
+              >
+                <path d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z" />
+              </svg>
             </div>
           </button>
         ) : (
@@ -67,7 +80,7 @@ export default function ShoppingItem({
       <div className="flex flex-col items-start justify-between text-white">
         <p className="category text-(--rose-500) text-preset-4">{category}</p>
         <h2 className="name text-(--rose-900) text-preset-3">{name}</h2>
-        <p className="price text-(--red-guide) text-preset-3">{price}</p>
+        <p className="price text-(--red-guide) text-preset-3">${price}</p>
       </div>
     </div>
   );

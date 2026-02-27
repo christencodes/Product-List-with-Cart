@@ -27,19 +27,21 @@ export default function ShoppingArea({ children }) {
   }
 
   function subtractFromCart(name, price, number) {
-    setShoppingcartItems((prevItem) => {
-      return prevItem
-        .filter((item) => item.quantity > 0)
-        .map((item) => {
+    const isThere = shoppingCartItems.find((item) => item.number === number);
+    if (isThere)
+      setShoppingcartItems((prevItems) =>
+        prevItems.map((item) => {
           if (item.number === number) {
-            return { ...item, quantity: item.quanity - 1 };
+            return { ...item, quantity: item.quantity - 1 };
           } else {
             return item;
           }
-        });
-    });
+        }),
+      );
 
-    console.log("subtracting from cart");
+    setShoppingcartItems((prevItems) => [
+      ...prevItems.filter((item) => item.quantity !== 0),
+    ]);
   }
 
   function addToCart(name, price, number) {
@@ -76,7 +78,7 @@ export default function ShoppingArea({ children }) {
             : undefined
         }
       ></div>
-      <div className=" mx-auto pt-20  relative shopping-area flex gap-10 h-full max-w-306.5 max-h-296.25">
+      <div className="lg:flex lg:flex-row md:flex md:flex-col md:gap-8 md:p-10 md:h-full sm:p-6  border-3 ">
         <ShoppingList
           addToCart={addToCart}
           shoppingCartItems={shoppingCartItems}

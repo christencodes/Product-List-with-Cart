@@ -1,5 +1,3 @@
-import removeIcon from "/src/assets/Images/icon-remove-item.svg";
-
 export default function CartItem({
   name,
   price,
@@ -18,13 +16,18 @@ export default function CartItem({
         </div>
         <div
           onClick={() => deletefromCart(number)}
-          className="h-5 w-5 border-(--rose-400) border rounded-full flex items-center justify-center"
+          className="group h-5 w-5 border-(--rose-400) border-2 rounded-full flex items-center justify-center hover:border-(--rose-900) cursor-pointer"
         >
-          <img
-            className="w-3 h-3 m-0 p-0 cursor-pointer "
-            src={removeIcon}
-            alt=""
-          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="10"
+            height="10"
+            fill="none"
+            viewBox="0 0 10 10"
+            className="fill-[#CAAFA7] group-hover:fill-(--rose-900)"
+          >
+            <path d="M8.375 9.375 5 6 1.625 9.375l-1-1L4 5 .625 1.625l1-1L5 4 8.375.625l1 1L6 5l3.375 3.375-1 1Z" />
+          </svg>
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ export default function ShoppingList({
   const shoppingData = ShoppingItemData;
 
   return (
-    <div className="shoppingList grid grid-cols-[1fr_1fr_1fr]  gap-x-6 gap-y-8 ">
+    <div className="shoppingList lg:grid lg:grid-cols-[1fr_1fr_1fr]  lg:gap-x-5 lg:gap-y-8 border-red-700 border-3 md:grid md:grid-cols-[1fr_1fr_1fr] md:gap-x-6 md:gap-y-8  flex flex-col justify-center items-center">
       {shoppingData.map((item, index) => {
         return (
           <ShoppingItem

@@ -1,5 +1,6 @@
 import CartItem from "./CartItem";
 import emptyCartImage from "/src/assets/Images/illustration-empty-cart.svg";
+import CarbonNeutralIcon from "/src/assets/Images/icon-carbon-neutral.svg";
 
 export default function ShoppingCart({
   shoppingCartItems,
@@ -10,11 +11,11 @@ export default function ShoppingCart({
   const filteredItems = shoppingCartItems.filter((item) => item.quantity > 0);
 
   return (
-    <div className="w-[384px] h-fit bg-white flex flex-col p-6 gap-6">
+    <div className="w-[384px] md:w-full h-fit bg-white flex flex-col p-6 gap-6 border-4 border-blue-600 ">
       <h2 className="text-preset-2 text-(--red-guide)">{`Your Cart (${shoppingCartItems.length})`}</h2>
 
       {filteredItems.length < 1 ? (
-        <div className="w-84 flex flex-col justify-center items-center">
+        <div className="w-84 flex flex-col justify-center items-center self-center">
           <img className="" src={emptyCartImage} alt="" />
           <p className="text-preset-4-bold text-(--rose-500)">
             Your added items will appear here
@@ -45,9 +46,19 @@ export default function ShoppingCart({
         </p>
       </div>
 
+      {shoppingCartItems.length > 0 ? (
+        <div className="w-full rounded-lg bg-(--rose-50) h-13 flex items-center justify-center gap-2 ">
+          <img className="w-5 h-5" src={CarbonNeutralIcon} alt="" />
+          <p className="text-(--rose-900)">
+            This is a <span className="text-preset-4-bold">carbon-neutral</span>{" "}
+            delivery
+          </p>
+        </div>
+      ) : undefined}
+
       <button
         onClick={() => orderConfirmStatus()}
-        className="w-full h-13 rounded-full bg-(--red-guide) text-(--rose-50) cursor-pointer"
+        className="w-full h-13 rounded-full bg-(--red-guide) text-(--rose-50) cursor-pointer hover:bg-[#9f3207] transition duration-300"
       >
         Confirm Order
       </button>
