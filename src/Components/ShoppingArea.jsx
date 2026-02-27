@@ -78,7 +78,7 @@ export default function ShoppingArea({ children }) {
             : undefined
         }
       ></div>
-      <div className="lg:flex lg:flex-row md:flex md:flex-col md:gap-8 md:p-10 md:h-full sm:p-6  border-3 ">
+      <div className="lg:flex lg:flex-row md:flex md:flex-col md:gap-8 md:p-10 md:h-fit sm:p-6   ">
         <ShoppingList
           addToCart={addToCart}
           shoppingCartItems={shoppingCartItems}

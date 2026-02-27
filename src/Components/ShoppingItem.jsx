@@ -16,10 +16,10 @@ export default function ShoppingItem({
     : 0;
 
   return (
-    <div className="shoppingItem flex flex-col  max-w-62.5 max-h-fit gap-8 sm:max-w-full ">
+    <div className="shoppingItem relative lg:flex lg:flex-col lg:gap-4 lg:max-w-53.25 lg:w-full  md:gap-10 max-h-none">
       <div className="item-image-container  relative ">
         <img
-          className={`max-w-full rounded-lg ${isThere ? "border-4 border-(--red-guide)" : "border-0"} `}
+          className={`max-w-full rounded-lg  ${isThere ? "border-4 border-(--red-guide)" : "border-0"} `}
           src={image}
           alt=""
         />
@@ -28,7 +28,7 @@ export default function ShoppingItem({
           <button
             // onClick={() => addToCart(name, price, num)}
             className={
-              "addCartButton absolute flex gap-10 items-center justify-center rounded-full max-w-44 bg-(--red-guide) border-2 border-(--rose-400) right-1/6 bottom-[-10%]  text-(--rose-900) text-preset-4-bold px-6 py-3 cursor-pointer"
+              "addCartButton absolute flex  items-center justify-around rounded-full bg-(--red-guide) border-2 border-(--red-guide)  bottom-[-10%] max-w-42 w-full max-h-12 left-0 right-0 mx-auto  text-(--rose-900) text-preset-4-bold px-6 py-3 cursor-pointer"
             }
           >
             <div
@@ -68,7 +68,7 @@ export default function ShoppingItem({
           <button
             onClick={() => addToCart(name, price, num)}
             className={
-              "addCartButton absolute flex gap-3 rounded-full min-w-44 max-h-12 border-2 border-(--rose-400) right-1/6 bottom-[-10%] bg-(--rose-50) text-(--rose-900) text-preset-4-bold px-6 py-3 cursor-pointer"
+              "addCartButton absolute flex items-center justify-center gap-3 rounded-full max-w-42 w-full max-h-12 border-2 border-(--rose-400) left-0 right-0 mx-auto bottom-[-10%] bg-(--rose-50) text-(--rose-900) text-preset-4-bold px-6 py-3 cursor-pointer"
             }
           >
             <img src={shoppingCartImg} alt="" />
@@ -77,9 +77,9 @@ export default function ShoppingItem({
         )}
       </div>
 
-      <div className="flex flex-col items-start justify-between text-white">
+      <div className="flex flex-col items-start justify-between text-white lg:mt-0 md:mt-10">
         <p className="category text-(--rose-500) text-preset-4">{category}</p>
-        <h2 className="name text-(--rose-900) text-preset-3">{name}</h2>
+        <h2 className="name text-(--rose-900) text-preset-3 ">{name}</h2>
         <p className="price text-(--red-guide) text-preset-3">${price}</p>
       </div>
     </div>
