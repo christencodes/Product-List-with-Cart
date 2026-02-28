@@ -9,7 +9,7 @@ export default function OrderConfirm({
 }) {
   // Derived State - shoppingCartItems info
   return (
-    <div className="absolute right-1/4 top-1/5 h-fit w-148 bg-white rounded-xl flex flex-col gap-8 p-10 z-11">
+    <div className="lg:absolute md:absolute fixed bottom-0 lg:right-1/4 lg:top-1/5 h-fit lg:w-148 bg-white rounded-xl flex flex-col gap-8 p-10 z-11 w-full  ">
       <div className="flex flex-col gap-6">
         <img className="w-12 h-12" src={OrderConfirmCheck} alt="" />
         <div className="flex flex-col gap-3">

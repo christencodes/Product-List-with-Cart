@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import shoppingCartImg from "/src/assets/Images/icon-add-to-cart.svg";
 
 export default function ShoppingItem({
@@ -10,17 +11,29 @@ export default function ShoppingItem({
   shoppingCartItems,
   subtractFromCart,
 }) {
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    function handleResize() {
+      setScreenWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const isThere = shoppingCartItems.find((item) => item.number === num);
   const amount = isThere
     ? shoppingCartItems.find((item) => item.number === num).quantity
     : 0;
 
   return (
-    <div className="shoppingItem relative lg:flex lg:flex-col lg:gap-4 lg:max-w-53.25 lg:w-full  md:gap-10 max-h-none">
+    <div className="shoppingItem relative lg:flex lg:flex-col lg:gap-4 lg:max-w-53.25 lg:w-full  md:gap-10 max-h-none mb-5 ">
       <div className="item-image-container  relative ">
         <img
-          className={`max-w-full rounded-lg  ${isThere ? "border-4 border-(--red-guide)" : "border-0"} `}
-          src={image}
+          className={`max-w-full rounded-lg sm:max-w-[327px] sm:max-h-[212px] ${isThere ? "border-4 border-(--red-guide)" : "border-0"} `}
+          src={screenWidth <= 375 ? image.replace("desktop", "mobile") : image}
           alt=""
         />
 
@@ -77,7 +90,7 @@ export default function ShoppingItem({
         )}
       </div>
 
-      <div className="flex flex-col items-start justify-between text-white lg:mt-0 md:mt-10">
+      <div className="flex flex-col items-start justify-between text-white lg:mt-0 md:mt-10 mt-6">
         <p className="category text-(--rose-500) text-preset-4">{category}</p>
         <h2 className="name text-(--rose-900) text-preset-3 ">{name}</h2>
         <p className="price text-(--red-guide) text-preset-3">${price}</p>

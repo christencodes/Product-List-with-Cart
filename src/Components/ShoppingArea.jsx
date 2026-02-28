@@ -74,7 +74,7 @@ export default function ShoppingArea({ children }) {
       <div
         className={
           orderConfirmStatus
-            ? `absolute h-full w-full  bg-black/50 z-11`
+            ? `lg:absolute fixed h-full w-full  bg-black/50 z-11`
             : undefined
         }
       ></div>
