@@ -11,7 +11,7 @@ export default function ShoppingCart({
   const filteredItems = shoppingCartItems.filter((item) => item.quantity > 0);
 
   return (
-    <div className="flex flex-col lg:gap-6 lg:min-w-3xs h-fit basis-91.25 shrink md:gap-6 bg-white md:p-6 p-6 gap-6 rounded-xl">
+    <div className="flex flex-col lg:gap-6 lg:min-w-[385px] h-fit basis-91.25 shrink md:gap-6 bg-white md:p-6 p-6 gap-6 rounded-xl">
       <h2 className="text-preset-2 text-(--red-guide)">{`Your Cart (${shoppingCartItems.length})`}</h2>
 
       {filteredItems.length < 1 ? (

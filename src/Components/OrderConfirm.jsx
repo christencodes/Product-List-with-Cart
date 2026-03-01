@@ -14,7 +14,7 @@ export default function OrderConfirm({
         <img className="w-12 h-12" src={OrderConfirmCheck} alt="" />
         <div className="flex flex-col gap-3">
           <h2 className="text-preset-1">Order Confirmed</h2>
-          <p className="text-preset-4-semibold text-(--rose-500)">
+          <p className="text-preset-4-bold text-(--rose-500)">
             We hope you enjoy your food!
           </p>
         </div>

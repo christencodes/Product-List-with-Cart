@@ -9,7 +9,6 @@ export default function ShoppingArea({ children }) {
   const [orderConfirmStatus, setOrderConfirmStatus] = useState(false);
 
   function changeOrderStatus() {
-    console.log("this ran");
     setOrderConfirmStatus(!orderConfirmStatus);
   }
 
@@ -26,7 +25,7 @@ export default function ShoppingArea({ children }) {
     });
   }
 
-  function subtractFromCart(name, price, number) {
+  function subtractFromCart(number) {
     const isThere = shoppingCartItems.find((item) => item.number === number);
     if (isThere)
       setShoppingcartItems((prevItems) =>
@@ -37,11 +36,11 @@ export default function ShoppingArea({ children }) {
             return item;
           }
         }),
-      );
+      ).filter((item) => item.quantity !== 0);
 
-    setShoppingcartItems((prevItems) => [
-      ...prevItems.filter((item) => item.quantity !== 0),
-    ]);
+    // setShoppingcartItems((prevItems) => [
+    //   ...prevItems.filter((item) => item.quantity !== 0),
+    // ]);
   }
 
   function addToCart(name, price, number) {
@@ -78,7 +77,8 @@ export default function ShoppingArea({ children }) {
             : undefined
         }
       ></div>
-      <div className="lg:flex lg:flex-row md:flex md:flex-col md:gap-8 md:p-10 md:h-fit sm:p-6   ">
+
+      <div className="lg:flex lg:flex-row md:flex md:flex-col lg:gap-0 md:gap-1 md:p-10 md:h-fit sm:p-6   ">
         <ShoppingList
           addToCart={addToCart}
           shoppingCartItems={shoppingCartItems}
