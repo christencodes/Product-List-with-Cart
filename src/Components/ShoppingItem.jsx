@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import shoppingCartImg from "/src/assets/Images/icon-add-to-cart.svg";
+import shoppingCartImg from "/src/Images/icon-add-to-cart.svg";
 
 export default function ShoppingItem({
   image,
