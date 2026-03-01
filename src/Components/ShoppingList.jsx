@@ -18,7 +18,7 @@ export default function ShoppingList({
           {shoppingData.map((item, index) => {
             return (
               <ShoppingItem
-                image={`./public/${item.image.desktop.slice(1)}`}
+                image={`${item.image.desktop}`}
                 name={item.name}
                 category={item.category}
                 price={item.price.toFixed(2)}

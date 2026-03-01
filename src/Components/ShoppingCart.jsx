@@ -1,6 +1,6 @@
 import CartItem from "./CartItem";
-import emptyCartImage from "/public/Images/illustration-empty-cart.svg";
-import CarbonNeutralIcon from "/public/Images/icon-carbon-neutral.svg";
+import emptyCartImage from "/Images/illustration-empty-cart.svg";
+import CarbonNeutralIcon from "/Images/icon-carbon-neutral.svg";
 
 export default function ShoppingCart({
   shoppingCartItems,

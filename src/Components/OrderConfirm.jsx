@@ -1,6 +1,6 @@
 import CartItem from "./CartItem";
 import ConfirmedItem from "./ConfirmedItem";
-import OrderConfirmCheck from "/public/Images/icon-order-confirmed.svg";
+import OrderConfirmCheck from "/Images/icon-order-confirmed.svg";
 import ShoppingItemData from "/src/assets/data.json";
 
 export default function OrderConfirm({
