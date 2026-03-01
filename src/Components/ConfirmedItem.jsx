@@ -12,7 +12,7 @@ export default function ConfirmedItem({
         <div className="flex flex-row gap-3 items-center">
           <img
             className="w-12 h-12 rounded-sm"
-            src={`src/${ShoppingItemData[number].image.thumbnail.slice(1)}`}
+            src={`${ShoppingItemData[number].image.thumbnail}`}
             alt=""
           />
           <div className="flex flex-col gap-2 ">
